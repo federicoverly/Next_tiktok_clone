@@ -1,6 +1,6 @@
 export default {
   name: "postedBy",
   title: "Posted By",
-  document: "reference",
-  to: { type: "user " },
+  type: "reference",
+  to: { type: "user" },
 };
