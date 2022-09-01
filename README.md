@@ -16,14 +16,14 @@ Then, run the development server:
 npm run dev
 ```
 
-But you can also check the project live [here] (https://next-tiktok-clone-eight.vercel.app/)
+But you can also check the project live [here](https://next-tiktok-clone-eight.vercel.app/)
 
 ## Libraries
 
 ### Sanity
 
-I am using Sanity to handle the server side. All the information is uploaded and pulled from there. Check this amazing platform [here] (https://www.sanity.io/)
+I am using Sanity to handle the server side. All the information is uploaded and pulled from there. Check this amazing platform [here](https://www.sanity.io/)
 
 ## Tailwind
 
-This project uses Tailwind CSS for the styling of components. Its in-built classes speed up the process. All about it [here] (https://tailwindcss.com/)
+This project uses Tailwind CSS for the styling of components. Its in-built classes speed up the process. All about it [here](https://tailwindcss.com/)
