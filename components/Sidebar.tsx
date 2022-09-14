@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import GoogleLogin from "react-google-login";
 import { AiFillHome, AiOutlineMenu } from "react-icons/ai";
 import { ImCancelCircle } from "react-icons/im";
 import Discover from "./Discover";
 import SuggestedAccounts from "./SuggestedAccounts";
 import Footer from "./Footer";
+import { GoogleLogin } from "@react-oauth/google";
 
 const Sidebar = () => {
   const [showSidebar, setShowSidebar] = useState(true);
@@ -41,8 +41,7 @@ const Sidebar = () => {
             <div className="px-2 py-4 hidden xl:block">
               <p className="text-gray-400">Log in to like and comment</p>
               <div className="pr-4">
-                <GoogleLogin
-                  clientId=""
+                {/* <GoogleLogin
                   render={(renderProps) => (
                     <button
                       onClick={renderProps.onClick}
@@ -56,7 +55,7 @@ const Sidebar = () => {
                   onSuccess={() => {}}
                   onFailure={() => {}}
                   cookiePolicy="single_host_origin"
-                />
+                /> */}
               </div>
             </div>
           )}
