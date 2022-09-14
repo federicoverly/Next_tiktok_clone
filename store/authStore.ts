@@ -1,6 +1,8 @@
-import create from "zustand";
+import create, { GetState, SetState } from "zustand";
 import axios from "axios";
 import { persist } from "zustand/middleware";
+import { IUser } from "../types";
+import { ReactComponentElement } from "react";
 
 const authStore = (set: any) => ({
   userProfile: null,

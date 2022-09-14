@@ -68,7 +68,7 @@ const VideoCart: NextPage<IProps> = ({ post }) => {
           onMouseLeave={() => setIsHover(false)}
           className="rounded-3xl"
         >
-          <Link href="/">
+          <Link href={`detail/${post._id}`}>
             <video
               ref={videoRef}
               src={post.video.asset.url}
