@@ -18,9 +18,6 @@ interface IProps {
 const Profile = ({ data }: IProps) => {
   const { user, userVideos, userLikedVideos } = data;
 
-  console.log(userVideos);
-  console.log(userLikedVideos);
-
   const [showUserVideos, setShowUserVideos] = useState<boolean>(true);
   const [videosList, setVideosList] = useState<Video[]>([]);
 

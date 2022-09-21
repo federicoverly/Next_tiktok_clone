@@ -1,8 +1,6 @@
-import create, { GetState, SetState } from "zustand";
+import create from "zustand";
 import axios from "axios";
 import { persist } from "zustand/middleware";
-import { IUser } from "../types";
-import { ReactComponentElement } from "react";
 import { BASE_URL } from "../utils";
 
 const authStore = (set: any) => ({

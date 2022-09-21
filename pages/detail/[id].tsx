@@ -70,6 +70,8 @@ const Detail = ({ postDetails }: IProps) => {
     }
   };
 
+  useEffect(() => {}, [post.comments]);
+
   if (!post) return null;
 
   return (

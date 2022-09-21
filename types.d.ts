@@ -12,20 +12,8 @@ export interface Video {
     userName: string;
     image: string;
   };
-  likes: {
-    postedBy: {
-      _id: string;
-      userName: string;
-      image: string;
-    };
-  }[];
-  comments: {
-    comment: string;
-    _key: string;
-    postedBy: {
-      _ref: string;
-    };
-  }[];
+  likes: ILikes[];
+  comments: IComment[];
   userId: string;
 }
 
@@ -34,4 +22,19 @@ export interface IUser {
   _type: string;
   userName: string;
   image: string;
+}
+
+export interface ILikes {
+  _key: string;
+  _ref: string;
+}
+
+interface IComment {
+  comment: string;
+  _key: string;
+  postedBy: {
+    _ref: string;
+    _type: string;
+    _id: string;
+  };
 }

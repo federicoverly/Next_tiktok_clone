@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { MdFavorite } from "react-icons/md";
 import useAuthStore from "../store/authStore";
+import { ILikes, IUser } from "../types";
 
 interface IProps {
   handleLike: () => void;
   handleDislike: () => void;
-  likes: any[];
+  likes: ILikes[];
 }
 
 const LikeButton = ({ handleLike, handleDislike, likes }: IProps) => {
   const [alreadyLiked, setAlreadyLiked] = useState<boolean>(false);
 
-  const { userProfile }: any = useAuthStore();
+  const { userProfile }: { userProfile: IUser | any } = useAuthStore();
 
   let filterLikes = likes?.filter(
-    (item: any) => item._ref === userProfile?._id
+    (item: ILikes) => item._ref === userProfile?._id
   );
 
   useEffect(() => {

@@ -1,9 +1,8 @@
 import { SanityAssetDocument } from "@sanity/client";
 import axios from "axios";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FaCloudUploadAlt } from "react-icons/fa";
-import { MdDelete } from "react-icons/md";
 import useAuthStore from "../store/authStore";
 import { client } from "../utils/client";
 import { topics } from "../utils/constants";
@@ -85,7 +84,6 @@ const Upload = () => {
               <p>Uploading...</p>
             ) : (
               <div>
-                {" "}
                 {videoAsset ? (
                   <div>
                     <video
@@ -97,7 +95,6 @@ const Upload = () => {
                   </div>
                 ) : (
                   <label className="cursor-pointer">
-                    {" "}
                     <div className="flex flex-col items-center justify-center h-full">
                       <div className="flex flex-col items-center justify-center">
                         <p className="font-bold text-xl">
