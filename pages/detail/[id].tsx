@@ -18,12 +18,13 @@ interface IProps {
 }
 
 const Detail = ({ postDetails }: IProps) => {
-  console.log(postDetails);
   const [post, setPost] = useState<Video>(postDetails);
   const [playing, setPlaying] = useState<boolean>(false);
   const [isVideoMuted, setIsVideoMuted] = useState<boolean>(true);
+  const [comment, setComment] = useState<string>("");
+  const [isPosting, setIsPosting] = useState<boolean>(false);
 
-  const { userProfile } = useAuthStore();
+  const { userProfile }: any = useAuthStore();
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const router = useRouter;
@@ -43,6 +44,31 @@ const Detail = ({ postDetails }: IProps) => {
       videoRef.current.muted = isVideoMuted;
     }
   }, [post, isVideoMuted]);
+
+  const handleLike = async (like: boolean) => {
+    if (userProfile) {
+      const { data } = await axios.put(`${BASE_URL}/api/like`, {
+        userId: userProfile._id,
+        postId: post._id,
+        like,
+      });
+      setPost({ ...post, likes: data.likes });
+    }
+  };
+
+  const addComment = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (userProfile && comment) {
+      setIsPosting(true);
+      const { data } = await axios.put(`${BASE_URL}/api/post/${post._id}`, {
+        userId: userProfile._id,
+        comment,
+      });
+      setPost({ ...post, comments: data.comments });
+      setComment("");
+      setIsPosting(false);
+    }
+  };
 
   if (!post) return null;
 
@@ -120,9 +146,23 @@ const Detail = ({ postDetails }: IProps) => {
               </Link>
             </div>
           </div>
-          <p className="px-10 text-lg text-gray-600">{post.caption}</p>
-          <div className="mt-10 px-10">{userProfile && <LikeButton />}</div>
-          <Comments />
+          <p className="px-10 text-lg text-gray-600 mt-5">{post.caption}</p>
+          <div className="mt-10 px-10">
+            {userProfile && (
+              <LikeButton
+                handleLike={() => handleLike(true)}
+                handleDislike={() => handleLike(false)}
+                likes={post.likes}
+              />
+            )}
+          </div>
+          <Comments
+            comment={comment}
+            setComment={setComment}
+            addComment={addComment}
+            isPosting={isPosting}
+            comments={post.comments}
+          />
         </div>
       </div>
     </div>

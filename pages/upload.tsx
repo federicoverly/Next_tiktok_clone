@@ -22,7 +22,6 @@ const Upload = () => {
   const router = useRouter();
 
   const uploadVideo = async (e: any) => {
-    console.log(e.target.files[0]);
     const selectedFile = e.target.files[0];
     const fileTypes = ["video/mp4", "video/webm", "video/ogg"];
     if (fileTypes.includes(selectedFile.type)) {
